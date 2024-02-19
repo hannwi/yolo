@@ -1,0 +1,12 @@
+name: yolo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11.7=hf27a42d_0
+  - pip:
+    - torch==2.0.1
+    - opencv-python
+    - pillow==10.2.0
+    - ipython
+
