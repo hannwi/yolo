@@ -8,5 +8,5 @@ dependencies:
     - torch==2.0.1
     - opencv-python
     - pillow==10.2.0
-    - ipython
+    - ipykernel
 
