@@ -13,12 +13,15 @@ def predict(
     image: Image.Image,
     confidence: float = 0.3,
     device: str = "cpu",  # "cuda", "mps", or "cpu"
+    half: bool = False,
+    verbose: bool = True,
 ) -> PredictOutput:
     from ultralytics import YOLO
 
     model = YOLO(model_path)
     device = torch.device(device)
-    pred = model(image, conf=confidence, device=device)
+    pred = model(
+        image, conf=confidence, device=device, half=half, verbose=verbose)
 
     bboxes = pred[0].boxes.xyxy.cpu().numpy()
     if bboxes.size == 0:
