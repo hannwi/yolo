@@ -2,6 +2,7 @@ from pathlib import Path
 
 import cv2
 from PIL import Image
+import torch
 
 from src.dto import PredictOutput
 from src.utils import create_mask_from_bbox, mask_to_pil
@@ -11,11 +12,12 @@ def predict(
     model_path: str | Path,
     image: Image.Image,
     confidence: float = 0.3,
-    device: str = "",
+    device: str = "cpu",  # "cuda", "mps", or "cpu"
 ) -> PredictOutput:
     from ultralytics import YOLO
 
     model = YOLO(model_path)
+    device = torch.device(device)
     pred = model(image, conf=confidence, device=device)
 
     bboxes = pred[0].boxes.xyxy.cpu().numpy()
