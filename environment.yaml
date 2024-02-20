@@ -6,6 +6,7 @@ dependencies:
   - python=3.11.7
   - pip:
     - torch==2.0.1
+    - torchvision==0.15.2
     - opencv-python
     - pillow==10.2.0
     - ipykernel
